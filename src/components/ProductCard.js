@@ -1,33 +1,34 @@
-import { useState } from "react";
-import { useEffect } from "react";
-import { useCart } from "../context/CartContext";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { add, remove } from "../store/cartSlice";
 import "./ProductCard.css";
 
 export const ProductCard = ({product}) => {
-  const { cartList, addToCart, removeFromCart } = useCart();
-  const [isInCart, setIsInCart] = useState(false);
 
-  const {id, name, price, image} = product;
+    const dispatch = useDispatch();
+    const cartList = useSelector(state => state.cartState.cartList);
+    const [isInCart, setIsInCart] = useState(false)
+    const {id, name, price, image} = product;
 
-  useEffect(() => {
-    const productIsInCart = cartList.find(cartItem => cartItem.id === id);
+    useEffect(() => {
+        const productInCart = cartList.find(item => item.id === id);
+    
+        if(productInCart){
+            setIsInCart(true);
+        } else {
+            setIsInCart(false);
+        }
+        
+    }, [cartList, id]);
 
-    if(productIsInCart){
-      setIsInCart(true);
-    } else {
-      setIsInCart(false);
-    }
-
-  }, [cartList, id]);
-
-  return (
+    return (
     <div className="productCard">
-      <img src={image} alt={name} />
-      <p className="name">{name}</p>
-      <div className="action">
-        <p>${price}</p>
-        { isInCart ? (<button className="remove" onClick={() => removeFromCart(product)}>Remove</button>) :  (<button onClick={() => addToCart(product)}>Add To Cart</button>) }
-      </div>
+        <img src={image} alt={name} />
+        <p className="name">{name}</p>
+        <div className="action">
+            <p>${price}</p>
+            { isInCart ? (<button className="remove" onClick={() => dispatch(remove(product))}>ARemove</button>) : (<button onClick={() => dispatch(add(product))}>Add To Cart</button>)}
+        </div>
     </div>
-  )
+    )
 }
