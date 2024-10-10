@@ -36,14 +36,14 @@
     border-radius: 5px;
     font-size: 16px;
     color: #FFFFFF;
-    background-color: #1C59AE;
+    background-color: #1791C8;
     padding: 7px 10px;
     cursor: pointer;
     max-width: 150px;
   }
   
   .productCard button:hover{
-    background-color: #103f80;
+    background-color: #1791C8;
   }
 
 .productCard .remove{
