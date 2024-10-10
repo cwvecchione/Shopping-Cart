@@ -1,7 +1,7 @@
 header {
     display: flex;
     justify-content: space-between;
-    height: 70px;
+    height: 110px;
     align-items: center;
     max-width: 1200px;
     margin: auto;
@@ -15,7 +15,8 @@ header {
     align-items: center;
   }
   .logo img{
-    max-width: 40px;
+    max-width: 110px;
+    max-height: 110px;
     margin-right: 5px;
   }
   
