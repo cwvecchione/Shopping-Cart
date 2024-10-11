@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom"; 
-import Logo from "../assets/logo.png"
+import Logo from "../assets/cwlogo.png";
 import { useCart } from "../context/CartContext";
 import "./Header.css";
 
@@ -9,7 +9,7 @@ export const Header = () => {
   return (
     <header>
       <Link to="/" className="logo">
-        <img src={Logo} alt="Shopmate Logo" />
+        <img src={Logo} alt="CW Shopping Cart" />
         <span>Shopping Cart</span>
       </Link>
       <nav className="navigation">
